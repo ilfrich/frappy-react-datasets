@@ -137,7 +137,7 @@ const MyComponent = props => (
 - `data` - the full data set payload retrieved from the API. It needs to be a JSON object with keys: `columns`, `data` 
  and `indexColumn`, which needs to be one of the `columns`. The index column values needs to be Unix timestamps.
     - In case you want to use a custom date format, you also need to add the `dateFormat`, specified either as Python 
-    date format or MomentJS date format to the main JSON object, that allows the front-end to parse the date.
+    date format or Luxon date format to the main JSON object, that allows the front-end to parse the date.
     - In case you want to provide custom column names, simply provide a `columnMapping` JSON object that maps from the 
     original name of the column to the label you want it to have. 
 - `width` - default `800` - the width of the chart area

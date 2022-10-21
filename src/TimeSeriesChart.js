@@ -1,24 +1,24 @@
 import React from "react"
 import Plot from "react-plotly.js"
-import moment from "moment"
+import { DateTime } from "luxon"
 
-const getMomentFormat = pythonFormat => {
+const getLuxonFormat = pythonFormat => {
     if (pythonFormat == null) {
         return "X"
     }
 
     const mapping = {
-        Y: "YYYY",
-        y: "YY",
+        Y: "yyyy",
+        y: "yy",
         m: "MM",
-        d: "DD",
+        d: "dd",
         H: "HH",
         M: "mm",
         S: "ss",
         f: "SSS",
     }
 
-    let momentFormat = ""
+    let luxonFormat = ""
     let tokenNext = false
     for (let i = 0; i < pythonFormat.length; i += 1) {
         if (pythonFormat[i] === "%") {
@@ -26,13 +26,13 @@ const getMomentFormat = pythonFormat => {
             continue
         }
         if (tokenNext) {
-            momentFormat += mapping[pythonFormat[i]]
+            luxonFormat += mapping[pythonFormat[i]]
             tokenNext = false
         } else {
-            momentFormat += pythonFormat[i]
+            luxonFormat += pythonFormat[i]
         }
     }
-    return momentFormat
+    return luxonFormat
 }
 
 const getTimeSeriesPlotData = (dataSetPayload, fillGaps = true) => {
@@ -66,12 +66,12 @@ const getTimeSeriesPlotData = (dataSetPayload, fillGaps = true) => {
         let effectiveDateFormat
         if (dateFormat == null || dateFormat.indexOf("%") !== -1) {
             // python date format
-            effectiveDateFormat = getMomentFormat(dateFormat)
+            effectiveDateFormat = getLuxonFormat(dateFormat)
         } else {
             effectiveDateFormat = dateFormat
         }
         // parse date and append to x-axis
-        const currentDate = moment(row[indexes[indexColumn]], effectiveDateFormat)._d
+        const currentDate = DateTime.fromFormat(row[indexes[indexColumn]], effectiveDateFormat)._d
         x.push(currentDate)
 
         Object.keys(y).forEach(column => {

@@ -1,5 +1,5 @@
 import React from "react"
-import util from "quick-n-dirty-utils"
+import { util } from "quick-n-dirty-utils"
 
 class ImageView extends React.Component {
     constructor(props) {

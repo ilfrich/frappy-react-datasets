@@ -615,7 +615,7 @@ class DataSetForm extends React.Component {
                                 </a>
                                 {" / "}
                                 <a
-                                    href="https://momentjs.com/docs/#/parsing/string-format/"
+                                    href="https://moment.github.io/luxon/#/parsing?id=table-of-tokens"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

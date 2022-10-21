@@ -1,6 +1,6 @@
 import React from "react"
 import { Popup, mixins, NotificationBar } from "quick-n-dirty-react"
-import util from "quick-n-dirty-utils"
+import { util } from "quick-n-dirty-utils"
 import DataSetForm from "./DataSetForm"
 import DataSetHandler from "./DataSetHandler"
 
